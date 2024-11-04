@@ -11,7 +11,7 @@ let showPasswordButton = document.querySelector(".password-button");
 let face = document.querySelector(".face");
 let toggleSignUpButton = document.querySelector(".toggle-signup");
 let loginButton = document.querySelector('.login-button');
-let signupFields = document.querySelector(".slide-down"); // Select the signup fields
+let signupFields = document.querySelector(".additional-fields"); // Select the signup fields
 
 passwordInput.addEventListener("focus", (event) => {
   document.querySelectorAll(".hand").forEach((hand) => {
