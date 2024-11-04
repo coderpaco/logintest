@@ -5,8 +5,12 @@
 
 let usernameInput = document.querySelector(".username");
 let passwordInput = document.querySelector(".password");
+let repeatPasswordInput = document.querySelector(".repeat-password");
+let emailInput = document.querySelector(".email");
 let showPasswordButton = document.querySelector(".password-button");
 let face = document.querySelector(".face");
+let toggleSignUpButton = document.querySelector(".toggle-signup");
+let loginButton = document.querySelector('.login-button');
 
 passwordInput.addEventListener("focus", (event) => {
   document.querySelectorAll(".hand").forEach((hand) => {
@@ -41,7 +45,6 @@ usernameInput.addEventListener(
   "input",
   _.throttle((event) => {
     let length = Math.min(event.target.value.length - 16, 19);
-
     face.style.setProperty("--rotate-head", `${-length}deg`);
   }, 100)
 );
@@ -60,6 +63,24 @@ showPasswordButton.addEventListener("click", (event) => {
       hand.classList.add("peek");
     });
   }
+});
+//switch between login and reg modes
+toggleSignUpButton.addEventListener("click", () => {
+    const emailField = document.querySelector(".email");
+    const repeatPasswordField = document.querySelector(".repeat-password");
+    const isSignUp = emailField.classList.contains("hidden");
+
+    if (isSignUp) {
+        emailField.classList.remove("hidden");
+        repeatPasswordField.classList.remove("hidden");
+        loginButton.textContent = "Register";
+        toggleSignUpButton.textContent = "Already have an account? Login";
+    } else {
+        emailField.classList.add("hidden");
+        repeatPasswordField.classList.add("hidden");
+        loginButton.textContent = "Sign In";
+        toggleSignUpButton.textContent = "Don't have an account yet? Sign Up";
+    }
 });
 
 //Added below
