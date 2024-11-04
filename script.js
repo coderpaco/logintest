@@ -11,6 +11,7 @@ let showPasswordButton = document.querySelector(".password-button");
 let face = document.querySelector(".face");
 let toggleSignUpButton = document.querySelector(".toggle-signup");
 let loginButton = document.querySelector('.login-button');
+let signupFields = document.querySelector(".slide-down"); // Select the signup fields
 
 passwordInput.addEventListener("focus", (event) => {
   document.querySelectorAll(".hand").forEach((hand) => {
@@ -66,21 +67,23 @@ showPasswordButton.addEventListener("click", (event) => {
 });
 //switch between login and reg modes
 toggleSignUpButton.addEventListener("click", () => {
-    const emailField = document.querySelector(".email");
-    const repeatPasswordField = document.querySelector(".repeat-password");
-    const isSignUp = emailField.classList.contains("hidden");
+    const isSignUpVisible = signupFields.classList.contains("active");
 
-    if (isSignUp) {
-        emailField.classList.remove("hidden");
-        repeatPasswordField.classList.remove("hidden");
-        loginButton.textContent = "Register";
-        toggleSignUpButton.textContent = "Already have an account? Login";
-    } else {
-        emailField.classList.add("hidden");
-        repeatPasswordField.classList.add("hidden");
-        loginButton.textContent = "Sign In";
-        toggleSignUpButton.textContent = "Don't have an account yet? Sign Up";
-    }
+    if (isSignUpVisible) {
+              // Slide up to hide the fields
+              signupFields.classList.remove("active");
+              signupFields.classList.add("hidden");
+              loginButton.textContent = "Sign In";
+              toggleSignUpButton.textContent = "Don't have an account yet? Sign Up";
+          } else {
+              // Slide down to show the fields
+              signupFields.classList.remove("hidden");
+              setTimeout(() => {
+                  signupFields.classList.add("active");
+              }, 10); // Small timeout to trigger the transition
+              loginButton.textContent = "Register";
+              toggleSignUpButton.textContent = "Already have an account? Login";
+        }
 });
 
 //Added below
