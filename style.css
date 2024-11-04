@@ -9,6 +9,9 @@ body {
   height: 100vh;
   overflow: hidden;
 }
+.hidden {
+    display: none;
+}
 
 .container {
   position: relative;
