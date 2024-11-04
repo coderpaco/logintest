@@ -61,3 +61,40 @@ showPasswordButton.addEventListener("click", (event) => {
     });
   }
 });
+
+//Added below
+function showPopup(isCorrect) {
+  const popup = document.getElementById('popup');
+  const message = document.getElementById('popup-message');
+
+  // Set message and style based on password correctness
+  if (isCorrect) {
+    message.textContent = 'Correct password!';
+    popup.classList.add('correct');
+    popup.classList.remove('incorrect');
+  } else {
+    message.textContent = 'Incorrect password!';
+    popup.classList.add('incorrect');
+    popup.classList.remove('correct');
+  }
+
+  // Display the popup
+  popup.classList.remove('hidden');
+
+  // Hide the popup after 3 seconds
+  setTimeout(() => {
+    popup.classList.add('hidden');
+  }, 3000);
+}
+
+// Example function to simulate password check and show popup
+document.querySelector('.login-button').addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent form submission for testing
+
+  // Check password (you'd replace this with real validation logic)
+  const password = document.querySelector('.password').value;
+  const isCorrect = password === 'abc123!'; // Replace with actual check
+
+  showPopup(isCorrect);
+});
+
