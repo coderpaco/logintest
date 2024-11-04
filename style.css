@@ -337,6 +337,39 @@ body {
   color: #fff;
 }
 
+/* Popup styles */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #243946;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.popup p {
+  margin: 0;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup.correct {
+  background-color: #4CAF50; /* Green for correct password */
+}
+
+.popup.incorrect {
+  background-color: #f44336; /* Red for incorrect password */
+}
+
+
 @-webkit-keyframes breath {
   0%,
   100% {
